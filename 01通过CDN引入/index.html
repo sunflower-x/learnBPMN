@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过CDN引入</title>
+    <script src="https://unpkg.com/bpmn-js@6.0.2/dist/bpmn-viewer.development.js"></script>
+    <script src="./xmlStr.js"></script>
+</head>
+<body>
+    <div id="canvas">
+
+    </div>
+    <script>
+        let bpmnJS=new BpmnJS({
+            container:"#canvas"
+        })
+        bpmnJS.importXML(xmlStr,function(err){
+            if(!err){
+                console.log('success');
+                let canvas=bpmnJS.get('canvas')
+                canvas.zoom('fit-viewport')
+            }else{
+                console.log('something get wrong:',err);
+            }
+        })
+    </script>
+    
+</body>
+</html>
